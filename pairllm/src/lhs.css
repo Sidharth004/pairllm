@@ -1,0 +1,77 @@
+body{
+    background: #626868;
+}
+
+.chat-box{
+    display: flex;
+    
+
+}
+
+
+.chat-log1{
+    background: #626868;
+    width: 50vw;
+    height: 550px;
+    /* padding: 20px; */
+    /* display: flex;
+    flex-direction: row; */
+    text-align: left;
+
+}
+.chat-log2{
+    background: #FFE2FE;
+    width: 50vw;
+    height: 580px;
+    /* display: flex;
+    flex-direction: row; */
+    text-align: left;
+
+}
+/* .chat-request{
+    padding: 20px;
+    height: 500px;
+    max-width: 45vw;
+    
+} */
+
+.test{
+    max-width: 480px;
+    display: flex;
+    padding: 12px;
+}
+.chat-message.chatgpt{
+    background:#353740;
+    /* padding-top: 20px; */
+    /* height: 500px;  */
+    
+    
+}
+
+
+
+.avatar{
+    /* display: flex; */
+    margin-left: 4px;
+    /* padding-top: 20px; */
+    padding-left: 10px;
+    background: #1a0404;
+    border-radius: 50%;
+
+    color: rgb(243, 243, 247);
+    width: 40px;
+    height: 40px;
+}
+
+.avatar.chatgpt{
+    /* display: flex; */
+    margin-left: 4px;
+    /* padding-top: 20px; */
+    padding-left: 10px;
+    background: #da1b1b;
+    border-radius: 50%;
+    
+    color: rgb(243, 243, 247);
+    width: 40px;
+    height: 40px;
+}
