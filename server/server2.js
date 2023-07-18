@@ -12,13 +12,13 @@ dotenv.config();
 
 // Initialize OpenAI with your key
 const configuration = new Configuration ({
-    apiKey: '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',
+    apiKey: '',
     
 });
 const openai = new OpenAIApi(configuration);
 
 
- const COOKIE_KEY="YwgyVVlc9F13UmzE4DNBCmPNESznbTGaahjTkqx-AS44BBXYJd0Uqs5MUOkpcafsjXw0mQ."
+ const COOKIE_KEY="."
  // Initialize Bard with your COOKIE_KEY
  await Bard.init(COOKIE_KEY);
 
