@@ -2,6 +2,7 @@ import React from "react";
 import { ReactDOM } from "react";
 import Navbar from './Navbar';
 import Footer from "./Footer";
+import ChatInterface from "./ChatInterface";
 import Leftinterface from "./leftinterface";
 
 export default function App(){
@@ -9,7 +10,8 @@ export default function App(){
     <div>
       {/* <h1>Hello Sid! Let's do this! Let's go!</h1> */}
       <Navbar/>
-      <Leftinterface/>
+      <ChatInterface />
+      {/* <Leftinterface/> */}
       <Footer/>
     </div>
   )
