@@ -18,7 +18,7 @@ const configuration = new Configuration ({
 const openai = new OpenAIApi(configuration);
 
 
- const COOKIE_KEY="YwgyVVlc9F13UmzE4DNBCmPNESznbTGaahjTkqx-AS44BBXYJd0Uqs5MUOkpcafsjXw0mQ."
+ const COOKIE_KEY="ZQgyVVWyl9S9YUzQdgp6pK44wrzjR2f7n3lnN_7oRjn280h8OppqJ5Q_DDHstk8gVJV-Sw."
  // Initialize Bard with your COOKIE_KEY
  await Bard.init(COOKIE_KEY);
 
