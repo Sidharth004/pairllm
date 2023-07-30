@@ -69,6 +69,9 @@ const chatInterface = () =>{
                 </div>
 
                 <div className="chat-log1">
+                    <div className="chat-banner1">
+                        <h3>GPT</h3>
+                    </div>
                     {gptChatLog.map((message,index)=>  (
                         <ChatMessage key={index} message={message}/>
                     ))}
@@ -89,6 +92,9 @@ const chatInterface = () =>{
 
 
  <div className="chat-log2">
+                    <div className="chat-banner2">
+                        <h3>BARD</h3>
+                    </div>
                     {bardChatLog.map((message,index)=>  (
                         <ChatMessage2 key={index} message={message}/>
                     ))}
@@ -141,9 +147,9 @@ const ChatMessage = ({ message }) => {
 }
 const ChatMessage2 = ({ message }) => {
     return (
-        <div className={`chat-message ${message.user === "bard" ? "chatgpt" : ""}`}>
+        <div className={`chat-message ${message.user === "bard" ? "bardcolor" : ""}`}>
             <div className="test">
-                <div className={`avatar ${message.user === "bard" ? "chatgpt" : ""}`}>
+                <div className={`avatar ${message.user === "bard" ? "bardcolor" : ""}`}>
                 </div>
                 <div className="message">
                     {message.message}
