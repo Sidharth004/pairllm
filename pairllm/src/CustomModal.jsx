@@ -12,11 +12,15 @@ const CustomModal =({open,onClose,onOptionChange})=>{
             onClose={onClose}
             style={{content : {width:'200px',height:'200px'}}}
             center
+            classNames = {{
+                overlay: 'customOverlay',
+                modal: 'customModal'
+            }}
             
             >
             
-            <button onClick ={()=> onOptionChange('A')}> OPTION A</button>
-            <button onClick ={()=>onOptionChange('B')}>OPTION B</button>
+            <button onClick ={()=> onOptionChange('A')}> Pair Up</button>
+            <button onClick ={()=>onOptionChange('B')}>Separate prompting</button>
             
             </Modal>  
             

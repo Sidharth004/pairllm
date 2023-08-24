@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 globalThis.fetch = fetch;
 import Bard, { askAI } from "bard-ai";
 
-const COOKIE_KEY = "ZQgyVTX0iUKb_0TqMlibHljWqg3PMA6EQsdpfM6RYERuo2EFqDkwIMR4HZr40oFUj8IS5w."
+const COOKIE_KEY = "ZggyVRVI0KhIumRUKJoLmpaJBSRiVwGG_12fKgZRuXOCZnw9lt7Ojpn4bGwuwQv6zDmMwQ."
 await Bard.init(COOKIE_KEY);
  
 // console.log(await askAI("Hello world!",true));

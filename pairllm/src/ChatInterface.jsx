@@ -13,37 +13,37 @@ const ChatInterface = ({isPairPrompting}) =>{
 
     //fetch response to the api combining the chatlog array of messages and sending it as a messages to local host 3000 as a POST
 
+    //handleSubmit function:
+    //task - responsible for handling the form submit event and sending a POST request to the server.
     async function handleSubmit(e, chatType) {
         e.preventDefault();
-        
-        let newInput, setChatLog, chatLog;
-        
-        if(chatType === 'gpt'){
-            chatLog = gptChatLog;
-            setChatLog = setGptChatLog;
-            newInput = gptInput;
-            setGptInput('');
-        }
-        else if(chatType === 'bard'){
-            chatLog = bardChatLog;
-            setChatLog = setBardChatLog;
-            newInput = bardInput;
-            setBardInput('');
-        }
+
+        let newGptChatLog = [...gptChatLog];
+        let newBardChatLog = [...bardChatLog];
+        let message ="";
+
+        //let newInput;
+        if (isPairPrompting){
+            const userMessage = {user : 'me',message:input};
+            newBardChatLog = [...newBardChatLog,userMessage]; //user and message passed as 2nd thing in this [ ]
+            newGptChatLog = [...newGptChatLog,userMessage];
+            message = input;
+            setInput(""); //setting the input prop to ""empty afterwards.
+        }    
         else{
-            chatLog =gptChatLog;
-            setChatLog = setGptChatLog;
-            newInput('');
+            
+                const userMessage = { user: "me", message: chatType === 'gpt' ? gptInput : bardInput };
+                chatType === 'gpt' ? newGptChatLog = [...newGptChatLog, userMessage] : newBardChatLog = [...newBardChatLog, userMessage];
+                message = chatType === 'gpt' ? gptInput : bardInput;
+                chatType === 'gpt' ? setGptInput("") : setBardInput("");
         }
-
-
+        //
 
         
-        const userMessage = { user: "me", message: input };
-        const newGptChatLog = [...gptChatLog, userMessage];
-        const newBardChatLog = [...bardChatLog, userMessage];
-  
-        setInput("");
+
+
+
+    
 
         const response = await fetch("http://localhost:5000/", {
             method: "POST",
@@ -51,19 +51,31 @@ const ChatInterface = ({isPairPrompting}) =>{
                 "Content-Type": 'application/json'
             },
             
+            // body: JSON.stringify({
+            //     message:input,
+            //     isPairPrompting,
+            //     model: chatType
+            //     //*** */
+            // })
             body: JSON.stringify({
-                message:input
+                message: isPairPrompting ? input : chatType === 'gpt' ? gptInput : bardInput,
+                isPairPrompting,
+                model: chatType
+
             })
         });
 
         if (response.ok) {
             try {
-              const data = await response.json();
-              console.log(data);
-              const gptMessage = { user: "gpt", message: data.message };
-              const bardMessage = { user: "bard", message: data.bardResponse };
-              setGptChatLog([...newGptChatLog, gptMessage]);
-              setBardChatLog([...newBardChatLog, bardMessage]);
+                const data = await response.json();
+                if (data.gptResponse) {
+                  const gptMessage = { user: "gpt", message: data.gptResponse };
+                  setGptChatLog([...newGptChatLog, gptMessage]);
+                }
+                if (data.bardResponse) {
+                  const bardMessage = { user: "bard", message: data.bardResponse };
+                  setBardChatLog([...newBardChatLog, bardMessage]);
+                }
             } catch (error) {
               // Handle non-JSON response
               const text = await response.text();
@@ -83,11 +95,12 @@ const ChatInterface = ({isPairPrompting}) =>{
                 <div className="prompt_area">
                     {isPairPrompting?
                     (<div>
-                        <form onSubmit={handleSubmit}>
+                        {/* calling the handle sbubmit function on submitting the form */}
+                        <form onSubmit={handleSubmit}>    
                         <input 
                             value={input}
                             onChange={
-                                (e)=> setInput(e.target.value)
+                                (e)=> setInput(e.target.value)  //setinput as content typed by user
                             }
                             className="prompt_area_field" 
                             placeholder=" lets do this!" 
@@ -196,7 +209,7 @@ const ChatMessage = ({ message }) => {
         </div>
     )
 }
-const ChatMessage2 = ({ message }) => {
+const ChatMessage2 = ({ message }) => { //component
     return (
         <div className={`chat-message ${message.user === "bard" ? "bardcolor" : ""}`}>
             <div className="test">
