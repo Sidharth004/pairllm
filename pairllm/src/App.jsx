@@ -3,7 +3,7 @@ import { ReactDOM } from "react";
 import Navbar from './Navbar';
 import Footer from "./Footer";
 import ChatInterface from "./ChatInterface";
-import Leftinterface from "./leftinterface";
+//import Leftinterface from "./leftinterface";
 import Parent from "./Parent";
 
 export default function App(){

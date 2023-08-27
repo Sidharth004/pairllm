@@ -15,6 +15,7 @@ const ChatInterface = ({isPairPrompting}) =>{
 
     //handleSubmit function:
     //task - responsible for handling the form submit event and sending a POST request to the server.
+    //post request to serve using fetch
     async function handleSubmit(e, chatType) {
         e.preventDefault();
 
