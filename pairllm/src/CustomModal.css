@@ -1,0 +1,37 @@
+
+.customModal{
+    width: 773px;
+    height: 454px;
+    border-radius: 30px;
+    background-color: #77E4D1;
+}
+.modal-content-parent{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    /* align-items: center; */
+    width: 306px;
+    
+
+
+    justify-content:space-around;
+}
+.modal-content1{
+    margin-right: 20px;
+}
+.modal-content2{
+    margin-left: 20px;
+}
+.modal-btn{
+    margin-top: 40px;
+    width: 306px;
+    height: 46px;
+    border-radius: 25px;
+}
+
+img{
+    width: 306px;
+    height: 217px;
+}
