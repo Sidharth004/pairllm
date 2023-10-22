@@ -9,14 +9,16 @@ import PaLM from "palm-api";
 
 dotenv.config();
 const configuration = new Configuration ({
-    apiKey: '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',
+    
+    apiKey:process.env.OPENAI_API_KEY
    
     
 });
 const openai = new OpenAIApi(configuration);
 
 
- const KEY="AIzaSyATtBQ4ZlsNr6GrHIlPOLmou1K5XSE4W74";
+
+ const KEY = process.env.PALM_KEY
  // Initialize Bard with your COOKIE_KEY  
  let bot = new PaLM(KEY,{
     fetch : fetch,
