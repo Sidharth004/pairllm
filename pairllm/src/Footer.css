@@ -1,9 +1,6 @@
-body{
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-}
+
 .footer-content{
+    position: relative;
     display: flex;
     justify-content:space-around ;
    /* position: fixed; */
@@ -13,7 +10,7 @@ body{
    right: 0;
    /* text-align: center; */
 
-   margin-top:0;
+   
    height: auto;
    
 }
