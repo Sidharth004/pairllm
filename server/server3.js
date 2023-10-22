@@ -1,23 +1,30 @@
+import { config } from 'dotenv';
+config();
 import express, { response } from 'express';
 import * as dotenv from 'dotenv'; 
+
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import {Configuration,OpenAIApi }from 'openai'
 import PaLM from "palm-api";
- import fetch from "node-fetch";
+import fetch from "node-fetch";
  globalThis.fetch = fetch;
 
 dotenv.config();
 const configuration = new Configuration ({
-    apiKey: '',
+    
+    apiKey:process.env.OPENAI_API_KEY,
+    
    
     
 });
 const openai = new OpenAIApi(configuration);
 
 
- const KEY="";
- // Initialize Bard with your COOKIE_KEY
+
+ const KEY = process.env.PALM_KEY
+
+ // Initialize Bard with your COOKIE_KEY  
  let bot = new PaLM(KEY,{
     fetch : fetch,
  });

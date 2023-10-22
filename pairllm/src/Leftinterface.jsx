@@ -83,7 +83,9 @@ const ChatInterface = ({isPairPrompting}) =>{
 }
     return(
         <div>
-            
+            <div className="chat-banner1">
+                     <h3>GPT</h3>
+            </div>
             <div className="chat-box">
 
                 <div className="prompt_area">
@@ -124,11 +126,9 @@ const ChatInterface = ({isPairPrompting}) =>{
                 
             }    
                 </div>
-
+                
                 <div className="chat-log1">
-                    <div className="chat-banner1">
-                        <h3>GPT</h3>
-                    </div>
+                    
                     {gptChatLog.map((message,index)=>  (
                         <ChatMessage key={index} message={message}/>
                     ))}

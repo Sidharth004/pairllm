@@ -89,96 +89,99 @@ const ChatInterface = ({isPairPrompting}) =>{
             }
 }
     return(
-        <div>
-            
-            <div className="chat-box">
+            <div>
+                
+                <div className="chat-box">
+
+                    
+
+                    <div className="chat-log1">
+                        <div className="chat-banner1">
+                            <h3>GPT</h3>
+                        </div>
+                        {gptChatLog.map((message,index)=>  (
+                            <ChatMessage key={index} message={message}/>
+                        ))}
+                        
+                        {/* <div className="chat-message chatgpt">
+                            <div className="test">
+                                <div className="avatar chatgpt">
+                                yo
+                                </div>
+                                <div className="message">
+                                Hi I am PairLLM!
+                                </div>
+                            </div>
+                        </div>  */}
+                    </div>
+
+    {/* ........................................................................................ */}
+
+
+    <              div className="chat-log2">
+                        <div className="chat-banner2">
+                            <h3>BARD</h3>
+                        </div>
+                        {bardChatLog.map((message,index)=>  (
+                            <ChatMessage2 key={index} message={message}/>
+                        ))}
+                        
+                        {/* <div className="chat-message chatgpt">
+                            <div className="test">
+                                <div className="avatar chatgpt">
+                                yo
+                                </div>
+                                <div className="message">
+                                Hi I am PairLLM!
+                                </div>
+                            </div>
+                        </div>  */}
+                    </div>
+
+                </div>
 
                 <div className="prompt_area">
-                    {isPairPrompting?
-                    (<div>
-                        {/* calling the handle sbubmit function on submitting the form */}
-                        <form onSubmit={handleSubmit}>    
-                        <input 
-                            value={input}
-                            onChange={
-                                (e)=> setInput(e.target.value)  //setinput as content typed by user
-                            }
-                            className="prompt_area_field" 
-                            placeholder=" lets do this!" 
-                            rows="1" >
-                        </input>
-                        </form>
-                    </div>)
-                    :
-                    (<div>
-                        <form onSubmit={(e)=> handleSubmit(e,'gpt')}>
-                            <input
-                                value={gptInput}
-                                onChange={(e)=>setGptInput(e.target.value)}
-                                className="prompt_area_field"
-                                placeholder="GPT prompt here"
-                            ></input>
-                        </form>
-                        <form onSubmit={(e)=> handleSubmit(e,'bard')}>
-                            <input
-                                value={bardInput}
-                                onChange={(e)=>setBardInput(e.target.value)}
-                                className="prompt_area_field"
-                                placeholder="BARD prompt here"
-                             />
-                        </form>
-                    </div>)
-        
-                
-            }    
-                </div>
-
-                <div className="chat-log1">
-                    <div className="chat-banner1">
-                        <h3>GPT</h3>
-                    </div>
-                    {gptChatLog.map((message,index)=>  (
-                        <ChatMessage key={index} message={message}/>
-                    ))}
+                        {isPairPrompting?
+                        (<div>
+                            {/* calling the handle sbubmit function on submitting the form */}
+                            <form className="prompt_area-form" onSubmit={handleSubmit}>    
+                            <input 
+                                value={input}
+                                onChange={
+                                    (e)=> setInput(e.target.value)  //setinput as content typed by user
+                                }
+                                className="prompt_area_field" 
+                                placeholder=" lets do this!" 
+                                rows="1" >
+                            </input>
+                            </form>
+                        </div>)
+                        :
+                        (<div>
+                            <form onSubmit={(e)=> handleSubmit(e,'gpt')}>
+                                <input
+                                    
+                                    value={gptInput}
+                                    onChange={(e)=>setGptInput(e.target.value)}
+                                    className="prompt_area_field"
+                                    placeholder="GPT prompt here"
+                                ></input>
+                            </form>
+                            <form onSubmit={(e)=> handleSubmit(e,'bard')}>
+                                <input
+                                    value={bardInput}
+                                    onChange={(e)=>setBardInput(e.target.value)}
+                                    className="prompt_area_field"
+                                    placeholder="BARD prompt here"
+                                />
+                            </form>
+                        </div>)
+            
                     
-                    {/* <div className="chat-message chatgpt">
-                        <div className="test">
-                            <div className="avatar chatgpt">
-                             yo
-                            </div>
-                            <div className="message">
-                            Hi I am PairLLM!
-                            </div>
-                        </div>
-                    </div>  */}
-                </div>
-
- {/* ........................................................................................ */}
-
-
- <              div className="chat-log2">
-                    <div className="chat-banner2">
-                        <h3>BARD</h3>
+                        }
                     </div>
-                    {bardChatLog.map((message,index)=>  (
-                        <ChatMessage2 key={index} message={message}/>
-                    ))}
-                    
-                    {/* <div className="chat-message chatgpt">
-                        <div className="test">
-                            <div className="avatar chatgpt">
-                             yo
-                            </div>
-                            <div className="message">
-                            Hi I am PairLLM!
-                            </div>
-                        </div>
-                    </div>  */}
-                </div>
-
             </div>
-        </div>
-    )
+        )
 }
 
 
