@@ -89,7 +89,7 @@ const ChatInterface = ({isPairPrompting}) =>{
             }
 }
     return(
-            <div>
+            <div className="ChatInterface">
                 
                 <div className="chat-box">
 

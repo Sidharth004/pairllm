@@ -4,12 +4,18 @@ body{
     height: 100vh;
     /* width: 100vw; */
 }
-
+.ChatInterface{
+    position: relative;
+}
+::placeholder {
+    color: rgb(10, 1, 1);
+    opacity: 1; /* Firefox */
+  }
 .chat-box{
     /* width: 100vw; */
     height: 100vh;
     display: flex;
-    position: relative;
+    /* position: relative; */
 
     
 
@@ -27,16 +33,20 @@ body{
 
 .prompt_area{
     
-
+    position: absolute;
+    bottom: 0;
     width:100%;
     display: flex; 
+    z-index: 2;
     justify-content: center;
    align-items: center; 
     position: absolute; 
+    backdrop-filter: blur(70px);
     /* display: flex; */
-    bottom: 0;
+  
     /* left: 0;
     right: 0; */
+    margin-top: -20px;
     
     
 
@@ -50,20 +60,20 @@ body{
     /* outline: invert; */
     /* background: rgba(0, 0, 0, 0.25); */
     background: linear-gradient(180deg, rgba(10, 6, 21, 0.18) 0%, rgba(10, 113, 95, 0.25) 100%);
-
+    backdrop-filter: blur(10px);
      padding: 8px; 
-     color: rgb(6, 31, 53);
+     color: rgb(0, 0, 0);
      font-size: larger;
     /* padding-right: 14px; */ 
 }
 
 
 .chat-log1{
-
+    z-index: 1;
     background: linear-gradient(180deg, rgba(255, 0, 255, 0.20) 0%, rgba(255, 214, 255, 0.00) 100%), linear-gradient(180deg, rgba(223, 179, 255, 0.95) 0%, rgba(145, 42, 220, 0.00) 100%);;
     /* background: #626868; */
     /* max-width: 50%; */
-    height: 100vh; 
+    height: 90vh; 
     /* padding: 20px; */
     /* display: flex;
     flex-direction: row; */
@@ -100,10 +110,11 @@ body{
     flex-shrink: 0;
 }
 .chat-log2{
+    z-index: 1;
     background: linear-gradient(180deg, rgba(135, 172, 254, 0.20) 0%, rgba(187, 208, 255, 0.00) 100%), linear-gradient(180deg, #6E7EFF 0%, rgba(15, 23, 89, 0.00) 100%);
     /* background: #FFE2FE; */
     /* width: 50vw; */
-    height: 100vh;
+    height: 90vh;
     /* display: flex;
     flex-direction: row; */
     text-align: left;
