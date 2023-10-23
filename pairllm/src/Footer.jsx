@@ -7,9 +7,9 @@ const footer = ()=>{
             {/* <h3>let's go!</h3> */}
             <div className="footer-content">
                 
-                <p>Github repo</p>
+                <a href="https://github.com/Sidharth004/pairllm"><p>Github repo</p></a>
                 <h3>Made with love by Sid!!</h3>
-                <p>Video tutorial</p>
+                <a href=""><p>Video tutorial</p></a>
             </div>
             
             {/* <h3>For video trial click here</h3>

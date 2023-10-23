@@ -24,7 +24,7 @@ const openai = new OpenAIApi(configuration);
 
  const KEY = process.env.PALM_KEY
 
- // Initialize Bard with your COOKIE_KEY  
+ // Initialize Palm model with PAL API Key
  let bot = new PaLM(KEY,{
     fetch : fetch,
  });
