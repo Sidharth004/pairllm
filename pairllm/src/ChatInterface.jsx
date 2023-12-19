@@ -27,8 +27,9 @@ const ChatInterface = ({isPairPrompting}) =>{
         //let newInput;
         if (isPairPrompting){
             const userMessage = {user : 'me',message:input};
-            newBardChatLog = [...newBardChatLog,userMessage]; //user and message passed as 2nd thing in this [ ]
-            newGptChatLog = [...newGptChatLog,userMessage];
+            const chatPair = {userMessage: userMessage, aiMessage:null}
+            newBardChatLog = [...newBardChatLog,chatPair]; //user and message passed as 2nd thing in this [ ]
+            newGptChatLog = [...newGptChatLog,chatPair];
             message = input;
             setInput(""); //setting the input prop to ""empty afterwards.
         }    
@@ -195,9 +196,9 @@ const ChatInterface = ({isPairPrompting}) =>{
 //     )
 // }
 const ChatMessage = ({chatPair}) => {
-    //  if (!chatPair || !chatPair.userMessage) {
-    //     return null; // Return null if chatPair or userMessage is undefined
-    // }
+      if (!chatPair || !chatPair.userMessage) {
+        return null; // Return null if chatPair or userMessage is undefined
+     }
     return (
         <div className="chat-parent">  
             <div className={`chat-message ${chatPair.userMessage.user === "gpt" ? "chatgpt" : ""}`}>
@@ -226,9 +227,10 @@ const ChatMessage = ({chatPair}) => {
     )
 }
 const ChatMessage2 = ({chatPair}) => {
-    //  if (!chatPair || !chatPair.userMessage) {
-    //     return null; // Return null if chatPair or userMessage is undefined
-    // } //component
+      if (!chatPair || !chatPair.userMessage) {
+         console.log('not working pls check')
+         return null; // Return null if chatPair or userMessage is undefined
+     } //component
     return (
         
 
