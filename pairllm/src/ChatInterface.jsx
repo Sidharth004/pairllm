@@ -203,7 +203,7 @@ const ChatMessage = ({chatPair}) => {
             <div className={`chat-message ${chatPair.userMessage.user === "gpt" ? "chatgpt" : ""}`}>
                 <div className="test">
                     
-                    <div className="question">
+                    <div className="question-left">
                         <div className="question-and-avatar">
                             <div className={`avatar ${chatPair.userMessage.user === "gpt" ? "chatgpt" : ""}`}> </div>
                             <div>
@@ -212,7 +212,7 @@ const ChatMessage = ({chatPair}) => {
                         </div>
                                                                                                              
                         
-                    <div className="answer">
+                    <div className="answer-left">
                         {chatPair.aiMessage && <p>{chatPair.aiMessage.message}</p>}
                     </div>
                     </div>
@@ -230,13 +230,29 @@ const ChatMessage2 = ({chatPair}) => {
     //     return null; // Return null if chatPair or userMessage is undefined
     // } //component
     return (
-        <div className={`chat-message ${chatPair.userMessage.user === "bard" ? "bardcolor" : ""}`}>
-            <div className="test">
-                <div className={`avatar ${chatPair.userMessage.user === "bard" ? "bardcolor" : ""}`}>
-                </div>
-                <div className="message">
-                    {chatPair.userMessage.message}
-                    {chatPair.aiMessage && <p>{chatPair.aiMessage.message}</p>}
+        
+
+
+<div className="chat-parent">  
+            <div className={`chat-message ${chatPair.userMessage.user === "bard" ? "bardcolor" : ""}`}>
+                <div className="test">
+                    
+                    <div className="question-right">
+                        <div className="question-and-avatar">
+                            <div className={`avatar ${chatPair.userMessage.user === "bard" ? "bardcolor" : ""}`}> </div>
+                            <div>
+                                {chatPair.userMessage.message}
+                            </div>  
+                        </div>
+                                                                                                             
+                        
+                    <div className="answer-right">
+                        {chatPair.aiMessage && <p>{chatPair.aiMessage.message}</p>}
+                    </div>
+                    </div>
+                    
+                    
+                   
                 </div>
             </div>
         </div>
