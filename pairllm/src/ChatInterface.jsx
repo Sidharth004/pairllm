@@ -1,6 +1,7 @@
 import { useState} from "react";
 import './lhs.css';
 
+
 const ChatInterface = ({isPairPrompting}) =>{
 
     //add state for input and chat log
@@ -32,10 +33,14 @@ const ChatInterface = ({isPairPrompting}) =>{
             setInput(""); //setting the input prop to ""empty afterwards.
         }    
         else{
-            
+
+               // let aiMessage = ""
                 const userMessage = { user: "me", message: chatType === 'gpt' ? gptInput : bardInput };
-                chatType === 'gpt' ? newGptChatLog = [...newGptChatLog, userMessage] : newBardChatLog = [...newBardChatLog, userMessage];
-                message = chatType === 'gpt' ? gptInput : bardInput;
+                const chatPair = {userMessage: userMessage, aiMessage: null}
+                chatType === 'gpt' ? newGptChatLog = [...newGptChatLog, chatPair] : newBardChatLog = [...newBardChatLog, chatPair];
+
+        //         chatType === 'gpt' ? newGptChatLog = [...newGptChatLog, userMessage] : newBardChatLog = [...newBardChatLog, userMessage];
+                 message = chatType === 'gpt' ? gptInput : bardInput;
                 chatType === 'gpt' ? setGptInput("") : setBardInput("");
         }
         //
@@ -71,11 +76,15 @@ const ChatInterface = ({isPairPrompting}) =>{
                 const data = await response.json();
                 if (data.gptResponse) {
                   const gptMessage = { user: "gpt", message: data.gptResponse };
-                  setGptChatLog([...newGptChatLog, gptMessage]);
+            //
+                  newGptChatLog[newGptChatLog.length-1].aiMessage= gptMessage;
+            //
+                  setGptChatLog([...newGptChatLog]);
                 }
                 if (data.bardResponse) {
                   const bardMessage = { user: "bard", message: data.bardResponse };
-                  setBardChatLog([...newBardChatLog, bardMessage]);
+                  newBardChatLog[newBardChatLog.length-1].aiMessage = bardMessage;
+                  setBardChatLog([...newBardChatLog]);
                 }
             } catch (error) {
               // Handle non-JSON response
@@ -90,29 +99,23 @@ const ChatInterface = ({isPairPrompting}) =>{
 }
     return(
             <div className="ChatInterface">
-                
                 <div className="chat-box">
-
-                    
-
                     <div className="chat-log1">
                         <div className="chat-banner1">
-                            <h3>GPT</h3>
+                            <img src="src\assets\Rectangle40.png" alt="" />
+                            <div className="banner-overlay-text-gpt">
+                                 <h3>GPT</h3>
+                            </div>
+                            
                         </div>
-                        {gptChatLog.map((message,index)=>  (
-                            <ChatMessage key={index} message={message}/>
+                        {gptChatLog.map((chatPair,index)=>  (
+                            <div className="parentchat">
+                                 <ChatMessage key={index} chatPair={chatPair}/>
+                            </div>
+                           
                         ))}
                         
-                        {/* <div className="chat-message chatgpt">
-                            <div className="test">
-                                <div className="avatar chatgpt">
-                                yo
-                                </div>
-                                <div className="message">
-                                Hi I am PairLLM!
-                                </div>
-                            </div>
-                        </div>  */}
+                       
                     </div>
 
     {/* ........................................................................................ */}
@@ -122,20 +125,11 @@ const ChatInterface = ({isPairPrompting}) =>{
                         <div className="chat-banner2">
                             <h3>BARD</h3>
                         </div>
-                        {bardChatLog.map((message,index)=>  (
-                            <ChatMessage2 key={index} message={message}/>
+                        {bardChatLog.map((chatPair,index)=>  (
+                            <ChatMessage2 key={index} chatPair={chatPair}/>
                         ))}
                         
-                        {/* <div className="chat-message chatgpt">
-                            <div className="test">
-                                <div className="avatar chatgpt">
-                                yo
-                                </div>
-                                <div className="message">
-                                Hi I am PairLLM!
-                                </div>
-                            </div>
-                        </div>  */}
+                       
                     </div>
 
                 </div>
@@ -200,27 +194,49 @@ const ChatInterface = ({isPairPrompting}) =>{
 //                     </div>
 //     )
 // }
-const ChatMessage = ({ message }) => {
+const ChatMessage = ({chatPair}) => {
+    //  if (!chatPair || !chatPair.userMessage) {
+    //     return null; // Return null if chatPair or userMessage is undefined
+    // }
     return (
-        <div className={`chat-message ${message.user === "gpt" ? "chatgpt" : ""}`}>
-            <div className="test">
-                <div className={`avatar ${message.user === "gpt" ? "chatgpt" : ""}`}>
-                </div>
-                <div className="message">
-                    {message.message}
+        <div className="chat-parent">  
+            <div className={`chat-message ${chatPair.userMessage.user === "gpt" ? "chatgpt" : ""}`}>
+                <div className="test">
+                    
+                    <div className="question">
+                        <div className="question-and-avatar">
+                            <div className={`avatar ${chatPair.userMessage.user === "gpt" ? "chatgpt" : ""}`}> </div>
+                            <div>
+                                {chatPair.userMessage.message}
+                            </div>  
+                        </div>
+                                                                                                             
+                        
+                    <div className="answer">
+                        {chatPair.aiMessage && <p>{chatPair.aiMessage.message}</p>}
+                    </div>
+                    </div>
+                    
+                    
+                   
                 </div>
             </div>
         </div>
+
     )
 }
-const ChatMessage2 = ({ message }) => { //component
+const ChatMessage2 = ({chatPair}) => {
+    //  if (!chatPair || !chatPair.userMessage) {
+    //     return null; // Return null if chatPair or userMessage is undefined
+    // } //component
     return (
-        <div className={`chat-message ${message.user === "bard" ? "bardcolor" : ""}`}>
+        <div className={`chat-message ${chatPair.userMessage.user === "bard" ? "bardcolor" : ""}`}>
             <div className="test">
-                <div className={`avatar ${message.user === "bard" ? "bardcolor" : ""}`}>
+                <div className={`avatar ${chatPair.userMessage.user === "bard" ? "bardcolor" : ""}`}>
                 </div>
                 <div className="message">
-                    {message.message}
+                    {chatPair.userMessage.message}
+                    {chatPair.aiMessage && <p>{chatPair.aiMessage.message}</p>}
                 </div>
             </div>
         </div>

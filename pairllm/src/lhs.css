@@ -13,12 +13,11 @@ body{
   }
 .chat-box{
     /* width: 100vw; */
-    height: 100vh;
+    height: 90vh;
     display: flex;
-    /* position: relative; */
-
+    z-index: 1;
     
-
+  
 }
 
 @media (max-width:835px) {
@@ -32,21 +31,21 @@ body{
 }
 
 .prompt_area{
-    
-    position: absolute;
+    z-index: 2;
+    position: fixed;
     bottom: 0;
     width:100%;
     display: flex; 
-    z-index: 2;
+    
     justify-content: center;
    align-items: center; 
     position: absolute; 
-    backdrop-filter: blur(70px);
+    /* backdrop-filter: blur(70px); */
     /* display: flex; */
   
     /* left: 0;
     right: 0; */
-    margin-top: -20px;
+   
     
     
 
@@ -59,10 +58,10 @@ body{
     border-radius: 24px;
     /* outline: invert; */
     /* background: rgba(0, 0, 0, 0.25); */
-    background: linear-gradient(180deg, rgba(10, 6, 21, 0.18) 0%, rgba(10, 113, 95, 0.25) 100%);
+    /* background: linear-gradient(180deg, rgba(10, 6, 21, 0.18) 0%, rgba(10, 113, 95, 0.25) 100%); */
     backdrop-filter: blur(10px);
      padding: 8px; 
-     color: rgb(0, 0, 0);
+     color: rgb(255, 255, 255);
      font-size: larger;
     /* padding-right: 14px; */ 
 }
@@ -70,38 +69,67 @@ body{
 
 .chat-log1{
     z-index: 1;
-    background: linear-gradient(180deg, rgba(255, 0, 255, 0.20) 0%, rgba(255, 214, 255, 0.00) 100%), linear-gradient(180deg, rgba(223, 179, 255, 0.95) 0%, rgba(145, 42, 220, 0.00) 100%);;
+    background: #000000;
+    
+    /* border: 3px solid #FDC82F; */
+    /* border: 3px solid #3FAEFF; */
+    /* background: linear-gradient(180deg, rgba(255, 0, 255, 0.20) 0%, rgba(255, 214, 255, 0.00) 100%), linear-gradient(180deg, rgba(223, 179, 255, 0.95) 0%, rgba(145, 42, 220, 0.00) 100%);; */
     /* background: #626868; */
     /* max-width: 50%; */
     height: 90vh; 
-    /* padding: 20px; */
-    /* display: flex;
-    flex-direction: row; */
+  
     text-align: left;
     flex: 1; /* This equally distributes the width of .chat-box to .chat-log1 and .chat-log2 */
-    max-height: calc(100% - 70px); /*adjust the subtraction value based on your .prompt_area height */
+    /* max-height: calc(100% - 70px);  */
+    /*adjust the subtraction value based on your .prompt_area height */
     /* overflow: auto;  */
     overflow: auto;
+    color: aliceblue;
 
 }
 .chat-banner1{
      
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background: rgba(81, 170, 154, 0.56);
-    mix-blend-mode: multiply;
-    /* padding-left: 20px; */
-    justify-content: center;
+    /* border-radius: 10px;
+    border-top: 5px solid  #3FAEFF;
+
+    border-bottom: 5px solid #000 #3FAEFF;
+
+    border-left: 5px solid #000 #3FAEFF; */
+
+    background: #000;
+    
+    /* justify-content: center; */
     /* border: 1px solid rgb(241, 231, 231); */
-    width: 100%;
+    /* width: 100%;
     height: 45px;
-    flex-shrink: 0;
+    flex-shrink: 0; */
+}
+.chat-banner1 img{
+    position: relative;
+    width: 100%;
+    height: 4%;
+}
+.banner-overlay-text-gpt{
+    position: absolute;
 }
 .chat-banner2{
     display: flex;
     align-items: center;
-    background: rgba(81, 170, 154, 0.56);
+    /* background: rgba(81, 170, 154, 0.56); */
+    /* background: #9B8927; */
+    background: #000000;
+    /* border: 1px solid  (#000000, #3FAEFF); */
+    border-top: 2px solid #FA5252;
 
+    border-right: 2px solid #FA5252;
+
+    border-bottom: 2px solid #FA5252;
+    border-left: 2px #000;
+
+    background: #000;
     /* padding-left: 20px; */
     justify-content: center;
     /* border: 1px solid black; */
@@ -111,15 +139,19 @@ body{
 }
 .chat-log2{
     z-index: 1;
-    background: linear-gradient(180deg, rgba(135, 172, 254, 0.20) 0%, rgba(187, 208, 255, 0.00) 100%), linear-gradient(180deg, #6E7EFF 0%, rgba(15, 23, 89, 0.00) 100%);
+    /* background: #FDC82F; */
+    background: #000000;
+    /* border: 3px solid #FA5252;  */
+    /* background: linear-gradient(180deg, rgba(135, 172, 254, 0.20) 0%, rgba(187, 208, 255, 0.00) 100%), linear-gradient(180deg, #6E7EFF 0%, rgba(15, 23, 89, 0.00) 100%); */
     /* background: #FFE2FE; */
     /* width: 50vw; */
     height: 90vh;
-    /* display: flex;
-    flex-direction: row; */
+    color: black;
+   
     text-align: left;
     flex: 1; /* This equally distributes the width of .chat-box to .chat-log1 and .chat-log2 */
-    max-height: calc(100% - 70px); /* adjust the subtraction value based on your .prompt_area height */
+    /* max-height: calc(100% - 70px);  */
+    /* adjust the subtraction value based on your .prompt_area height */
     /* overflow: auto;  */
     overflow: auto;
 
@@ -132,45 +164,69 @@ body{
 } */
 
 .test{
-    max-width: 480px;
+    border-color: #da1b1b;
     display: flex;
+    flex-direction: column;
     padding: 12px;
-}
-.chat-message.chatgpt{
-    /* border-radius: 30px; */
-    background: rgba(203, 69, 203, 0.45);
-
-    /* background:#353740; */
-    /* padding-top: 20px; */
-    /* height: 500px;  */
-    
-    
-}
-.chat-message.bardcolor{
-    background: rgba(81, 19, 81, 0.33);
-    mix-blend-mode: color-burn;
-    /* background:#353740; */
-    /* padding-top: 20px; */
-    /* height: 500px;  */
-    
-    
-}
-.message{
-    display: flex;
-   
-  
-    width: 100%;
-     padding-left: 5%; 
-}
-.test{
     width: auto;
     display: flex;
     justify-content: space-between;
-   
 }
+.chat-message.chatgpt{
+    display: flex;
+    /* border-radius: 30px; */
+    /* background: rgba(203, 69, 203, 0.45); */
+    /* background: #161616; */
+    background: #0A0A0A;
+    /* border-color: red; */
+    
+}
+
+
+.chat-message.bardcolor{
+    /* background: rgba(81, 19, 81, 0.33); */
+    /* background:#E4BC2F ; */
+    
+   
+    border: 1px solid red;
+
+    background: #0A0A0A;
+    /* mix-blend-mode: color-burn; */
+   
+    
+    
+}
+.question{
+    border-radius: 30px;
+    border: 5px solid #3FAEFF;
+    padding-top: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+    display:flex;
+    text-align:justify;
+    flex-direction: column;
+  
+    width: auto;
+     /* padding-left: 5%;  */
+}
+.question-and-avatar{
+    display: flex;
+    
+}
+.answer{
+    border-radius: 5px 5px 30px 30px;
+    border: 3px solid #3FAEFF;
+    margin: 2%;
+    padding: 1%;
+    background: #0A0A0A; /* Add this line */
+    
+    
+}
+
 .avatar{
     /* display: flex; */
     margin-left: 4px;
+    
     /* padding-top: 20px; */
     padding-left: 10px;
     background: #1a0404;
@@ -184,8 +240,7 @@ body{
 .avatar.chatgpt{
     width: 40px;
     /* display: flex; */
-    /* margin-left: 4px; */
-    /* margin-right: 5%; */
+    
     /* padding-top: 20px; */
     padding-left: 10px;
     background: #da1b1b;

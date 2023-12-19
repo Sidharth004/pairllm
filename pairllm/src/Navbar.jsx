@@ -9,17 +9,18 @@ const Navbar = ({openModal}) =>{
     return(
         
         <nav>
-           
-            <div>
-                <h1 id="nav-title">PairLLM</h1>
-            </div>
-            <div>
+           <div className="nav-parent">
+                <div>
+                        <h1 id="nav-title">PairLLM</h1>
+                </div>
+           </div>
+            
+           <div className="navbar-selectpair">
                 <button className="nav-button" onClick={()=>{
                     console.log("button clicked");
                     openModal();
                 }}>Choose Pair</button>
             </div>
-            
         </nav>
     )
 }

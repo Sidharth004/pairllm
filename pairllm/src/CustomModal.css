@@ -3,7 +3,8 @@
     width: 773px;
     height: 454px;
     border-radius: 30px;
-    background-color: #77E4D1;
+    background-color: #DFB72A;
+    backdrop-filter: blur(70px);
 }
 .modal-content-parent{
     display: flex;
@@ -13,9 +14,6 @@
     margin-bottom: 40px;
     /* align-items: center; */
     width: 306px;
-    
-
-
     justify-content:space-around;
 }
 .modal-content1{
