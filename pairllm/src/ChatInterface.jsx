@@ -124,7 +124,11 @@ const ChatInterface = ({isPairPrompting}) =>{
 
     <              div className="chat-log2">
                         <div className="chat-banner2">
-                            <h3>BARD</h3>
+                            <img src="src\assets\Rectangle41.png" alt="" />
+                            <div className="banner-overlay-text-gpt">
+                                 <h3>BARD</h3>
+                            </div>
+                            
                         </div>
                         {bardChatLog.map((chatPair,index)=>  (
                             <ChatMessage2 key={index} chatPair={chatPair}/>
